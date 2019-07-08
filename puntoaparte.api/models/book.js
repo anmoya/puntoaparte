@@ -5,10 +5,13 @@ module.exports = (sequelize, DataTypes) => {
     subtitle: DataTypes.STRING,
     abstract: DataTypes.STRING,
     price: DataTypes.INTEGER,
-    year: DataTypes.INTEGER
+    year: DataTypes.INTEGER,
+    author_id: DataTypes.INTEGER
   }, {});
   Book.associate = function(models) {
-    // associations can be defined here
+    Book.belongsTo(models.Author, {
+      foreignKey: 'author_id'
+    });
   };
   return Book;
 };
