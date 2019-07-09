@@ -23,6 +23,8 @@ Author.create({
   }).then(() => console.log('Funcionó'));
 });
 
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api',router);

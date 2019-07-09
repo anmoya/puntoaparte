@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
     Author.hasMany(models.Book, {
       foreignKey: 'author_id',
       as: 'books'
+    }),
+    Author.hasMany(models.review, {
+      foreignKey: 'author_id',
+      as: 'reviews'
     });
   };
   return Author;
