@@ -1,4 +1,5 @@
 
+
 class LandingHandler {
   static async test(req, res) {
     return res.status(200).send({ data: "some shit" });
@@ -9,7 +10,7 @@ class LandingHandler {
   }
   
   static async getBooks(req, res){
-
+    res.json(await req.database.queryDB('SELECT * FROM "Books"'));
   }
 }
 
