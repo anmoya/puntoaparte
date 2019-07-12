@@ -1,36 +1,57 @@
 const Joi = require("@hapi/joi");
 
-const bookSchema = Joi.object()
-  .keys({
-    title: Joi.string()
-      .alphanum()
-      .min(3)
-      .max(60)
-      .required(),
-    subtitle: Joi.string()
-      .alphanum()
-      .min(3)
-      .max(100)
-      .required(),
-    abstract: Joi.string()
-      .alphanum()
-      .min(50)
-      .max(600)
-      .required(),
-    price: Joi.number()
-      .integer()
-      .min(0),
-    year: Joi.number()
-      .integer()
-      .min(1900)
-      .max(2050),
-    author_id: Joi.number()
-      .integer()
-      .min(1)
-  })
-  .with("username", "birthyear")
-  .without("password", "access_token");
+const bookSchema = Joi.object().keys({
+  isbn: Joi.string()
+    .min(10)
+    .max(15)
+    .required(),
+  title: Joi.string()
+    .min(3)
+    .max(60)
+    .required(),
+  subtitle: Joi.string()
+    .min(3)
+    .max(100)
+    .required(),
+  abstract: Joi.string()
+    .min(50)
+    .max(600)
+    .required(),
+  quantity: Joi.number()
+    .integer()
+    .min(0),
+  price: Joi.number()
+    .integer()
+    .min(0),
+  year: Joi.number()
+    .integer()
+    .max(2050),
+  author_id: Joi.number()
+    .integer()
+    .min(1)
+});
+
+authorSchema = Joi.object().keys({
+  firstname: Joi.string()
+    .min(2)
+    .max(255)
+    .required(),
+  lastname: Joi.string()
+    .min(2)
+    .max(255)
+    .required(),
+  city: Joi.string()
+    .min(2)
+    .max(255)
+    .required(),
+  country: Joi.string()
+    .min(2)
+    .max(255)
+    .required(),
+  born: Joi.date().iso()
+});
 
 module.exports = {
-  bookSchema
+  bookSchema,
+  authorSchema
 };
