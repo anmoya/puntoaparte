@@ -2,12 +2,17 @@
 module.exports = (sequelize, DataTypes) => {
   const Review = sequelize.define('Review', {
     title: DataTypes.STRING,
-    link: DataTypes.STRING,
+    text: DataTypes.TEXT,
     date: DataTypes.DATE,
-    book_id: DataTypes.INTEGER
-  }, {});
+    likes: DataTypes.INTEGER,
+    BookId: DataTypes.INTEGER
+  }, 
+  {
+    schema: "public",
+    tableName: "Reviews"
+  });
   Review.associate = function(models) {
     Review.belongsTo(models.Book);
-  };
+    };
   return Review;
 };

@@ -26,7 +26,7 @@ const bookSchema = Joi.object().keys({
   year: Joi.number()
     .integer()
     .max(2050),
-  author_id: Joi.number()
+  AuthorId: Joi.number()
     .integer()
     .min(1)
 });

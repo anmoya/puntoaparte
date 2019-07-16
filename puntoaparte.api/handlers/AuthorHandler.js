@@ -20,6 +20,20 @@ class AuthorHandler {
     
   }
 
+  static async addAuthor(req, res)
+  {
+    db.Author.create({
+      first: req.body.first,
+      last: req.body.last,
+      city: req.body.city
+    })
+      .then(result => res.json(result))
+      .catch(error => res.json({
+          type: error.name,
+          erro: error.parent.detail
+      }));
+  }
+
   static async checkAuthor(req, res){
       const id = req.body.id;
 

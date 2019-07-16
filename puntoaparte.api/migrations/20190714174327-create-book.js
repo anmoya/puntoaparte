@@ -8,11 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      isbn: {
-        allowNull: false,
+      title: {
         type: Sequelize.STRING
       },
-      title: {
+      isbn: {
         type: Sequelize.STRING
       },
       subtitle: {
@@ -21,13 +20,10 @@ module.exports = {
       abstract: {
         type: Sequelize.TEXT
       },
-      year: {
-        type: Sequelize.INTEGER
-      },
-      quantity: {
-        type: Sequelize.INTEGER
-      },
       price: {
+        type: Sequelize.INTEGER
+      },
+      year: {
         type: Sequelize.INTEGER
       },
       createdAt: {
@@ -38,12 +34,12 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      author_id: {
+      AuthorId: {
         type: Sequelize.INTEGER,
         references: {
-           model: 'Authors', // 'persons' refers to table name
-           key: 'id', // 'id' refers to column name in persons table
-        } 
+          model: "Authors",
+          key: 'id'
+        }
       }
     });
   },

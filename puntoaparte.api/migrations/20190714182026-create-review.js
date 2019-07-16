@@ -11,18 +11,14 @@ module.exports = {
       title: {
         type: Sequelize.STRING
       },
-      link: {
-        type: Sequelize.STRING
+      text: {
+        type: Sequelize.TEXT
       },
       date: {
         type: Sequelize.DATE
       },
-      book_id: {
-        type: Sequelize.INTEGER,
-        references: {
-           model: 'Books', // 'persons' refers to table name
-           constraint: 'id'
-        } 
+      likes: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -31,6 +27,13 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      BookId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Books",
+          key: 'id'
+        }
       }
     });
   },

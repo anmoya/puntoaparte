@@ -1,6 +1,8 @@
 const db = require("../models");
 const { bookSchema } = require("../validators");
 const Joi = require("@hapi/joi");
+const to = require('await-to-js').default;
+const { PayloadException } = require('../_utils/exceptions');
 
 const JoiErrorHandler = errorArray => {
   let obj = {};
@@ -11,11 +13,21 @@ const JoiErrorHandler = errorArray => {
 };
 
 class BooksHandler {
-  static async getBook(req, res) {
+  static async getBooks(req, res)
+  {
+    const [ err, books ] = await to(db.Book.findAll());
+    if (!books) res.json(PayloadException("No users found. Contact administrator","No data found",404));
+    if(books) res.json(books);
+    res.json(err);
+  }
+  
+  
+  static async addBook(req, res) 
+  {
     const validation = Joi.validate(req.body, bookSchema);
-
+    console.log(req.body);
     if (validation.error)
-      return res.json(JoiErrorHandler(validation.error.details));
+      return res.json(validation);
 
     db.Book.create({
       title: req.body.title,
@@ -24,14 +36,13 @@ class BooksHandler {
       abstract: req.body.abstract,
       price: req.body.price,
       year: req.body.year,
-      author_id: req.body.author_id
+      AuthorId: req.body.AuthorId
     })
       .then(result => res.json(result))
-      .catch(error => res.json({
-          type: error.name,
-          erro: error.parent.detail
-      }));
+      .catch(error => res.json(error));
   }
+
+
 }
 
 module.exports = BooksHandler;
