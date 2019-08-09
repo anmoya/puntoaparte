@@ -1,16 +1,14 @@
 import Vue from 'vue'
-
-
-import BootstrapVue from 'bootstrap-vue'
-
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-
 import App from './App.vue'
 
-Vue.use(BootstrapVue)
 Vue.config.productionTip = false
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'font-awesome/css/font-awesome.min.css'
+
+import Store from './store'
 
 new Vue({
   render: h => h(App),
+  Store
 }).$mount('#app')
