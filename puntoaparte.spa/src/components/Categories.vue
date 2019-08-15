@@ -8,19 +8,17 @@
   </div>
 </template>
 <script>
-import CategoryCardBase from './CategoryCardBase'
+import { mapGetters } from "vuex";
+import CategoryCardBase from "./CategoryCardBase";
 export default {
-    data () {
-      return {
-        List: {
-          Literatura: [{text:'Clasicos',value:5}, {text:'Ficción Historica',value:6}, {text:'Poesía',value:3}, {text:'Literatura Contemporanea',value:1}, {text:'Por Generos', value:100}],
-          //Historia: ['Antigua', 'Medieval', 'Contemporanea', ,'Teoría', 'Por Tema'],
-          //Filosofia: ['Antigua', 'Medieval', 'Contemporanea', 'Teoría', 'Por Escuela']
-        }
-      }
-    },
-    components: {
-        CategoryCardBase
-    }
-}
+  computed: {
+    ...mapGetters({ List: "bruteCategories" })
+  },
+  mounted() {
+    this.$store.dispatch("getCategories");
+  },
+  components: {
+    CategoryCardBase
+  }
+};
 </script>

@@ -4,11 +4,14 @@ const LandingHandler = require('../handlers/LandingHandler');
 const BooksHandler = require('../handlers/BooksHandler');
 const AuthorHandler = require('../handlers/AuthorHandler');
 const ReviewHandler = require('../handlers/ReviewHandler');
+const CategoryHandler = require('../handlers/CategoryHandler');
 
 // Landing Handler: for testing
 router.get('/', LandingHandler.test );
 router.get('/landing/date', LandingHandler.getDate );
 router.get('/', LandingHandler.getBooks );
+
+router.get('/categories', CategoryHandler.getCategories)
 
 // Books Handler
 router.get('/books', BooksHandler.getBooks );

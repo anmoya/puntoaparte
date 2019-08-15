@@ -10,18 +10,19 @@
     <div
       class="col-6"
     >
-    <h1>{{title}}</h1>
-    <ul v-for="(tema, index) in orderList(List)" :key="index">
-      <li>{{ tema.text }}</li>
+    <h1>{{ Title }}</h1>
+    <ul v-for="(category, index) in orderList(List)" :key="index">
+      <li>{{ category.theme }}</li>
       </ul>
     </div>
   </div>
 </template>
 <script>
 export default {
+  
   props: {
     List: Array,
-    title: String
+    Title: String
   },
   data () {
     return {
