@@ -1,5 +1,5 @@
 <template>
-  <div class="card mb-3" style="max-width: 540px;">
+  <div class="card mb-3" style="max-width: 740px;">
     <div class="row no-gutters">
       <div class="col-md-4">
         <img
@@ -10,10 +10,10 @@
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+          <h5 class="card-title">{{Special.title}}</h5>
           <p
             class="card-text"
-          >This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          >{{ cutAbstract(Special["abstract"]) }}</p>
           <p class="card-text">
             <small class="text-muted">More info...</small>
           </p>
@@ -24,6 +24,16 @@
 </template>
 
 <script>
-export default {};
+import { mapGetters } from 'vuex'
+export default {
+  computed: {
+    ...mapGetters({ Special: "getSpecial" })
+  },
+  methods: {
+    cutAbstract: function(text){
+      return text.substring(0,360)+'...'
+    }
+  }
+};
 </script>
 

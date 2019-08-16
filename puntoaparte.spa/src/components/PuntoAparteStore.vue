@@ -6,9 +6,6 @@
         <div class="col-md-auto">
             <TheSpecialOne />
         </div>
-        <div class="col-md-auto">
-            <TheSpecialOne />
-        </div>
       </div>
       <div>
         <Categories />

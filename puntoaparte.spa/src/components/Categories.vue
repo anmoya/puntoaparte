@@ -12,10 +12,7 @@ import { mapGetters } from "vuex";
 import CategoryCardBase from "./CategoryCardBase";
 export default {
   computed: {
-    ...mapGetters({ List: "bruteCategories" })
-  },
-  mounted() {
-    this.$store.dispatch("getCategories");
+    ...mapGetters({ List: "getCategories" })
   },
   components: {
     CategoryCardBase

@@ -6,25 +6,29 @@ Vue.use(Vuex)
 
 const baseUrl = 'http://localhost:4200/api'
 const categoriesUrl = `${baseUrl}/categories`
+const booksUrl = `${baseUrl}/books`
 
 export default new Vuex.Store({
     strict: true,
     state: {
-        categories: []
+        categories: [],
+        books: []
     },
     getters: {
-        bruteCategories: state => state.categories
+        getCategories: state => state.categories,
+        getSpecial: state => state.books[0]
     },
     mutations: {
-        setData(state, data)
-        {
-            state.categories = data.c
+        setData(state, data){
+            state.categories = data.cdata
+            state.books = data.bdata
         }
     },
     actions: {
-        async getCategories(context){
-            let c = (await Axios.get(categoriesUrl)).data.List
-            context.commit('setData', { c })
+        async getData(context){
+            let cdata = (await Axios.get(categoriesUrl)).data
+            let bdata = (await Axios.get(booksUrl)).data
+            context.commit('setData', { cdata, bdata })
         }
     }
 })
