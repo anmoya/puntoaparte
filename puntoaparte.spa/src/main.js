@@ -9,6 +9,6 @@ import 'font-awesome/css/font-awesome.min.css'
 import store from './store'
 
 new Vue({
-  render: h => h(App),
-  store
+  store,
+  render: h => h(App)
 }).$mount('#app')
