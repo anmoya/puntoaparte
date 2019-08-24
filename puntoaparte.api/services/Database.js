@@ -1,8 +1,6 @@
 const { Client } = require('pg');
-// TODO: extract to config file
 const { development } = require('../config/config.json');
 const constr = `postgres://${development.username}:${development.password}@${development.host}:${development.port}/${development.database}`;
-
 
 class Database {
   constructor(connectionString) {
@@ -19,7 +17,6 @@ class Database {
   async connect() {
     try {
       await this.conn.connect();
-      console.log(development);
       console.log('Success on connection!');
     } catch (e) {
       console.log('Error on connecting', e);

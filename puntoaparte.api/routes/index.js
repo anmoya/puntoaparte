@@ -18,6 +18,7 @@ router.get("/books", BooksHandler.getBooks);
 //router.get('/books:id', BooksHandler.getBookById );
 //router.put('/books/:id', BooksHandler.updateBook );
 router.post("/books", BooksHandler.addBook);
+router.put("/books", BooksHandler.updateBook);
 // router.delete('/books/:id', BooksHandler.deleteBook );
 // router.patch('/books:id', BooksHandler.patchBook );
 

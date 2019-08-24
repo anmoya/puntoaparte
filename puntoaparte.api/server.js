@@ -41,7 +41,4 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api", router);
 
-
-
-
 app.listen(4200, () => console.log("Corriendo en 4200"));

@@ -16,41 +16,39 @@ class AuthorHandler {
 
     if (validation.error)
       return res.json(JoiErrorHandler(validation.error.details));
-
-    
   }
 
-  static async addAuthor(req, res)
-  {
+  static async addAuthor(req, res) {
     db.Author.create({
       first: req.body.first,
       last: req.body.last,
       city: req.body.city
     })
       .then(result => res.json(result))
-      .catch(error => res.json({
+      .catch(error =>
+        res.json({
           type: error.name,
           erro: error.parent.detail
-      }));
+        })
+      );
   }
 
-  static async checkAuthor(req, res){
-      const id = req.body.id;
+  static async checkAuthor(req, res) {
+    const id = req.body.id;
 
-      db.Author.findAll({
-        where: {
-          id: id
-        }
-      })
-      .then( result => res.json( result ))
-      .catch( error => res.json(error));
-
+    db.Author.findAll({
+      where: {
+        id: id
+      }
+    })
+      .then(result => res.json(result))
+      .catch(error => res.json(error));
   }
 
-  static async getAllAuthors(req, res){
-      db.Author.findAll({})
-      .then( result => res.json(result))
-      .catch( error => res.json(error));
+  static async getAllAuthors(req, res) {
+    db.Author.findAll({})
+      .then(result => res.json(result))
+      .catch(error => res.json(error));
   }
 }
 
